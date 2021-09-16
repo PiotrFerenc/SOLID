@@ -1,28 +1,17 @@
-﻿#Liskov substitution principle
-##Zasada podstawienia Liskov
+﻿#Interface segregatrion
+##Segregacja interfejsów
 
-Klasa bazowa powinna rozszerzać możliwości klasy potomnej i nie wpływać na funkcjonalności które były już tam wcześniej.
+Klient nie powinien zostać zmuszony do korzystania z metod których nie potrzebuje. Tworzymy małe interface co pomoże w łatwiejszej refaktoryzacji.
 
+Na ogół drukarki mają możliwość drukawania, skanowania i wysyłania faxów. Na rynku dostępne są różne konfiguracje tych sprzętów.
+Wszystkie funkcje tych urządzeń zostały podzielone na  osobne interface:
 ```c#
-var Penguin = new Penguin();
-var Seagull = new Seagull();
-var Pigeon = new Pigeon();
-
-Penguin.Fly();
-Seagull.Fly();
-
-Pigeon.Fly();//<-- Błąd. wiemy że pingwiny nie latają
-
+IFax
+IPrinter
+IScanner
 ```
+Nasza drukarka która wysyła fax i drukuje potrzebuje tylko tych dwóch interfaców. 
 
-Jak możemy sobie z tym poradzić? Wydzielić funkcjonalność do interface i dodać tylko do ptaków które latają
 ```c#
-var penguin = new Penguin();
-var seagull = new Seagull();
-var pigeon = new Pigeon();
-
-pigeon.Fly();
-seagull.Fly();
-
-penguin.Eat(); //<-- dostępna tylko jedna metoda
+HpPrinter : IPrinter, IFax 
 ```

@@ -4,7 +4,7 @@ namespace Dependency_inversion
 {
     public class GoogleAuthenticator : IAuthenticator
     {
-        public bool Authenticate()
+        public void Authenticate()
         {
             Console.WriteLine("Google auth..");
         }

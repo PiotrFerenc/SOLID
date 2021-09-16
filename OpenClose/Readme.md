@@ -1,12 +1,21 @@
-﻿#Single Responsibility Principle
-##Pojedyńcza odpowiedzialność
+﻿#Open close principle
+##Otwarte/zamknięte
 
-Budujemy rozwiązania tak aby posiadały tylko jedną podpowiedzialność. Separujemy kolejne funkcjonalności.
+Budujemy rozwiązania tak aby było otwarte na rozszerzenie a zamknięte na modyfikacje.
+Budujemy klasę do obsługi zapisu faktury. Sama klasa nie wie w jaki sposób będzie się to odbywało.
 
-- InvoiceManager wykonuje **tylko** obliczania 
-- InvoiceLogger **tylko** wyświetla dane faktury
-- itd...
+```c#
+public InvoicePersistence(IInvoiceWrite invoiceSaver, Invoice invoice)
+```
 
-Mniejsze klasy są przejrzystsze. 💪
+Do konstruktora wstrzykujemy fakturę (Invoice) oraz wybrany mechanizm do zapisu faktury
+(implementację interface IInvoiceWriter).
 
+```c#
+            var mongoWriter = new MongoInvoiceWrite();
+           // var pdfWriter = new PdfInvoiceWrite();
+            var invoice = new Invoice();
 
+            var invoiceWriter = new InvoicePersistence(mongoWriter, invoice);
+            invoiceWriter.Save();
+```

@@ -1,17 +1,38 @@
-﻿#Interface segregatrion
-##Segregacja interfejsów
+﻿#Dependency inversion
+##odwrócona zależność
 
-Klient nie powinien zostać zmuszony do korzystania z metod których nie potrzebuje. Tworzymy małe interface co pomoże w łatwiejszej refaktoryzacji.
+Tworzymy komponenty w takie sposób żeby klasy wyższego poziomu (```AuthenticatorManager```) nie były zależne od klas niższego poziomu (```Authenticator```). Żeby to osiągnąć użyjemy abstrakcji. 
 
-Na ogół drukarki mają możliwość drukawania, skanowania i wysyłania faxów. Na rynku dostępne są różne konfiguracje tych sprzętów.
-Wszystkie funkcje tych urządzeń zostały podzielone na  osobne interface:
+
+źle
 ```c#
-IFax
-IPrinter
-IScanner
+    public class AuthenticatorManager
+    {
+        private readonly GoogleAuthenticator _authenticator = new GoogleAuthenticator();
+
+        public void TryAuthenticate()
+        {
+            _authenticator.Authenticate();
+        }
+    }
+
 ```
-Nasza drukarka która wysyła fax i drukuje potrzebuje tylko tych dwóch interfaców. 
 
+Dobrze
 ```c#
-HpPrinter : IPrinter, IFax 
+    public class AuthenticatorManager
+    {
+        private readonly IAuthenticator _authenticator;
+
+        public AuthenticatorManager(IAuthenticator authenticator)
+        {
+            _authenticator = authenticator;
+        }
+
+        public void TryAuthenticate()
+        {
+            _authenticator.Authenticate();
+        }
+    }
+
 ```

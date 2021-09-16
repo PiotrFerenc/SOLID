@@ -1,7 +1,7 @@
 ﻿namespace Dependency_inversion
 {
-    public interface IGoogleAuthenticator
+    public interface IAuthenticator
     {
-        bool Authenticate();
+        void Authenticate();
     }
 }

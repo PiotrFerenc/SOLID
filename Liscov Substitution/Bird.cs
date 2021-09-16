@@ -1,7 +1,7 @@
 ﻿namespace Liscov_Substitution
 {
-    public class Bird
+    public abstract class Bird
     {
-        
+        public abstract void Eat();
     }
 }

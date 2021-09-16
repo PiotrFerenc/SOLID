@@ -1,13 +1,13 @@
 ﻿using System;
 using Domain;
 
-namespace OpenClose.Savers
+namespace OpenClose.InvoiceWriters
 {
     public class PdfInvoiceWrite : IInvoiceWrite
     {
         public void Save(Invoice invoice)
         {
-            Console.WriteLine($"Invoice {invoice.Number} save as PDF.");
+            Console.WriteLine($"Invoice {invoice.Number} was saved as pdf.");
         }
     }
 }

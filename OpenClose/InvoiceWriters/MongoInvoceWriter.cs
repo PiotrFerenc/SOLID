@@ -3,11 +3,11 @@ using Domain;
 
 namespace OpenClose.InvoiceWriters
 {
-    public class PdfInvoiceWrite : IInvoiceWrite
+    public class MongoInvoiceWrite : IInvoiceWrite
     {
         public void Save(Invoice invoice)
         {
-            Console.WriteLine($"Invoice {invoice.Number} save as PDF.");
+            Console.WriteLine($"Invoice {invoice.Number} has been saved in the database.");
         }
     }
 }

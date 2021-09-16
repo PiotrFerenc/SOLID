@@ -1,7 +1,7 @@
 ﻿namespace Interface_Segregation
 {
-    public class IPrinter
+    public interface IPrinter
     {
-        
+        void Print();
     }
 }

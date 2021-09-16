@@ -2,6 +2,6 @@
 {
     public interface IFax
     {
-        void Send();
+        void SendFax();
     }
 }

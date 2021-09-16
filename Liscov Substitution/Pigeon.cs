@@ -2,11 +2,17 @@
 
 namespace Liscov_Substitution
 {
-    public class Pigeon : Bird
+    public class Pigeon : Bird, IFly
     {
-        public override void Fly()
+        public override void Eat()
         {
-            Console.WriteLine("Pigeon");
+            Console.WriteLine("Pigeon is eating");
+        }
+
+        public void Fly()
+        {
+            Console.WriteLine("Pigeon is flying");
+
         }
     }
 }

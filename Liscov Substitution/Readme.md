@@ -1,21 +1,28 @@
-﻿#Open close principle
-##Otwarte/zamknięte
+﻿#Liskov substitution principle
+##Zasada podstawienia Liskov
 
-Budujemy rozwiązania tak aby było otwarte na rozszerzenie a zamknięte na modyfikacje.
-Budujemy klasę do obsługi zapisu faktury. Sama klasa nie wie w jaki sposób będzie się to odbywało.
+Klasa bazowa powinna rozszerzać możliwości klasy potomnej i nie wpływać na funkcjonalności które były już tam wcześniej.
 
 ```c#
-public InvoicePersistence(IInvoiceWrite invoiceSaver, Invoice invoice)
+var Penguin = new Penguin();
+var Seagull = new Seagull();
+var Pigeon = new Pigeon();
+
+Penguin.Fly();
+Seagull.Fly();
+
+Pigeon.Fly();//<-- Błąd. wiemy że pingwiny nie latają
+
 ```
 
-Do konstruktora wstrzykujemy fakturę (Invoice) oraz wybrany mechanizm do zapisu faktury
-(implementację interface IInvoiceWriter).
-
+Jak możemy sobie z tym poradzić? Wydzielić funkcjonalność do interface i dodać tylko do ptaków które latają
 ```c#
-            var mongoWriter = new MongoInvoiceWrite();
-           // var pdfWriter = new PdfInvoiceWrite();
-            var invoice = new Invoice();
+var penguin = new Penguin();
+var seagull = new Seagull();
+var pigeon = new Pigeon();
 
-            var invoiceWriter = new InvoicePersistence(mongoWriter, invoice);
-            invoiceWriter.Save();
+pigeon.Fly();
+seagull.Fly();
+
+penguin.Eat(); //<-- dostępna tylko jedna metoda
 ```

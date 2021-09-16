@@ -2,11 +2,11 @@
 
 namespace Liscov_Substitution
 {
-    public class Penguin : Bird
+    public class Penguin : Bird 
     {
-        public override void Fly()
+        public override void Eat()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Penguin is eating");
         }
     }
 }

@@ -2,16 +2,16 @@
 
 namespace Interface_Segregation.Printers
 {
-    public class CannonPrinter : IPrinter, IScanner
+    public class HpPrinter : IPrinter, IFax 
     {
         public void Print()
         {
             Console.WriteLine("Printing ...");
         }
 
-        public void Scan()
+        public void SendFax()
         {
-            Console.WriteLine("Scanning ...");
+            Console.WriteLine("Sending fax ...");
         }
     }
 }

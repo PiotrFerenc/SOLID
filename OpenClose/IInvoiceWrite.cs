@@ -2,7 +2,7 @@
 
 namespace OpenClose
 {
-    public interface IInvoiceSaver
+    public interface IInvoiceWrite
     {
         void Save(Invoice invoice);
     }

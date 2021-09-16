@@ -4,10 +4,10 @@ namespace OpenClose
 {
     public class InvoicePersistence
     {
-        private readonly IInvoiceSaver _invoiceSaver;
+        private readonly IInvoiceWrite _invoiceSaver;
         private readonly Invoice _invoice;
         
-        public InvoicePersistence(IInvoiceSaver invoiceSaver, Invoice invoice)
+        public InvoicePersistence(IInvoiceWrite invoiceSaver, Invoice invoice)
         {
             _invoiceSaver = invoiceSaver;
             _invoice = invoice;

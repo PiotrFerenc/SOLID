@@ -1,8 +1,8 @@
 ﻿namespace Domain
 {
-    public class Seller
+    public class Buyer
     {
-        public Name Name { get; set; }
+        public PersonName Name { get; set; }
         public Address Address { get; set; }
     }
 }
